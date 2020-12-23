@@ -15,6 +15,9 @@ class Category:
 
     def set_father(self, father):
         self.__father = father
+
+    def get_name(self):
+        return self.__name
     
     def __str__(self):
         if(self.__father == 0):

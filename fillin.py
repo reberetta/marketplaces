@@ -1,11 +1,11 @@
 from marketplaces import Marketplace
 from categories import Category
 
-mkp_names = ('Submarino', 'Americanas', 'Mercado Livre')
+mkp_names = ('Submarino', 'Americanas', 'MercadoLivre')
 
 cat_names = {
                 1: ["Smartphones", "Livros", "Informática"],
-                2: ["Utilidades Domésticas", "Infantil", "Cama, Mesa e Banho"],
+                2: ["UtilidadesDomesticas", "Infantil", "CamaMesaBanho"],
                 3: ["Animais", "Vestuário", "Ferramentas"]
             }
 
@@ -15,8 +15,7 @@ subcat_names = {
                 "3": "Notebooks"
             }
 
-
-def fill_marketplaces(mkp_names) -> list:
+def fill_marketplaces() -> list:
 
     mkp_list = list()
 
@@ -30,7 +29,7 @@ def print_list(one_list):
     for one in one_list:
         print(str(one))
 
-def fill_categories(cat_names) -> list:
+def fill_categories() -> list:
 
     cat_list = list()
     i = 1
@@ -44,7 +43,7 @@ def fill_categories(cat_names) -> list:
 
     return cat_list
 
-def fill_subcategories(subcat_names) -> list:
+def fill_subcategories() -> list:
 
     subcat_list = list()
     i = 1
@@ -75,23 +74,30 @@ def show_menu() -> int:
 
     return option
 
-def print_cat_by_mkp(cat_list, mkp):
+def print_cat_by_mkp(cat_list, mkp) -> list:
 
+    lista = []
     for cat in cat_list:
         if cat.is_mkp(mkp):
-            print(cat)
+            lista.append(cat)
+    
+    return lista
 
-def print_subcat_by_cat(subcat_list, cat):
+def print_subcat_by_cat(subcat_list, cat) -> list:
+    lista = []
 
     for subcat in subcat_list:
         if subcat.is_son(cat):
-            print(subcat)
+            lista.append(subcat)
+    
+    return lista
 
-
-if __name__ == '__main__':
+def fill_all():
     mkp_list = fill_marketplaces(mkp_names)
     cat_list = fill_categories(cat_names)
     subcat_list = fill_subcategories(subcat_names)
+
+if __name__ == '__main__':
     option = -1
 
     while(option != 0):
@@ -114,4 +120,3 @@ if __name__ == '__main__':
             exit()
         else:
             print("Invalid option!")
-
