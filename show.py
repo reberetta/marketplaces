@@ -1,4 +1,4 @@
-from fillin import print_cat_by_mkp, fill_subcategories, print_subcat_by_cat, mkp_list, cat_list
+from fillin import print_cat_by_mkp, fill_subcategories, print_subcat_by_cat, mkp_list, cat_list, print_marketplaces
 from flask import Flask, render_template
 
 
@@ -29,6 +29,7 @@ def index():
 
 
     #mkp_list = fill_marketplaces()
+    mkp_list = print_marketplaces()
 
     for mkp in mkp_list:
         temp = {'nome': mkp.get_name(), 'rota': '/categorias/'+str(mkp.id)}

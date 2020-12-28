@@ -1,5 +1,9 @@
 from marketplaces import Marketplace
 from categories import Category
+from datetime import datetime
+
+caminho = 'marketplaces/historico.txt'
+
 
 def read_marketplaces(nome:str)->list:
     lista = []
@@ -76,12 +80,28 @@ def show_menu() -> int:
 
     return option
 
+def salvar_historico(linha:str) -> None:
+    arquivo = open(caminho,'a')
+    arquivo.write(f'{linha}\n')
+    arquivo.close()
+
+def print_marketplaces() -> list:
+    lista = []
+    for mkp in mkp_list:
+        lista.append(mkp)
+    linha = f'{datetime.now()}: Print marketplaces'
+    salvar_historico(linha)
+    return lista
+
 def print_cat_by_mkp(cat_list, mkp) -> list:
 
     lista = []
     for cat in cat_list:
         if cat.is_mkp(mkp):
             lista.append(cat)
+    
+    linha = f'{datetime.now()}: Print categories by marketplace, id={mkp}'
+    salvar_historico(linha)
     
     return lista
 
@@ -92,6 +112,10 @@ def print_subcat_by_cat(subcat_list, cat) -> list:
         if subcat.is_son(cat):
             lista.append(subcat)
     
+    linha = f'{datetime.now()}: Print subcategories by categories, id={cat}'
+    salvar_historico(linha)
+
+
     return lista
 
 def only_cats(cat_list) -> list:
@@ -109,7 +133,7 @@ if __name__ == '__main__':
         option = int(show_menu())
 
         if option == 1: 
-            print_list(mkp_list)
+            print_list(print_marketplaces())
         elif option == 2:
             print("Choose a marketplace id")
             print_list(mkp_list)

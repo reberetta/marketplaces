@@ -1,0 +1,6 @@
+2020-12-28 15:52:44.189069: Print subcategories by categories, id=1
+2020-12-28 15:55:51.275363: Print marketplaces
+2020-12-28 15:56:22.194030: Print marketplaces
+2020-12-28 16:03:04.194995: Print marketplaces
+2020-12-28 16:03:08.112133: Print categories by marketplace, id=1
+2020-12-28 16:03:08.858741: Print subcategories by categories, id=1
