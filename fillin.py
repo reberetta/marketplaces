@@ -1,29 +1,31 @@
 from marketplaces import Marketplace
 from categories import Category
 
-mkp_names = ('Submarino', 'Americanas', 'MercadoLivre')
+def read_marketplaces(nome:str)->list:
+    lista = []
+    arquivo = open(nome, 'r')
+    for linha in arquivo:
+        linha.strip("\n")
+        lista.append(Marketplace(linha, len(lista)+1))
+    arquivo.close()
+    return lista
 
-cat_names = {
-                1: ["Smartphones", "Livros", "Informática"],
-                2: ["UtilidadesDomesticas", "Infantil", "CamaMesaBanho"],
-                3: ["Animais", "Vestuário", "Ferramentas"]
-            }
+def read_categories(nome:str)->list:
+    lista = []
+    cont = 1
+    arquivo = open(nome, 'r')
+    for linha in arquivo:
+        linha = linha.strip("\n")
+        linha = linha.split(";")
+        cat = Category(linha[2],int(linha[1]),cont,int(linha[0]))
+        cont += 1
+        lista.append(cat)
+    arquivo.close()
+    return lista
 
-subcat_names = {
-                "1": "Dual Chip", 
-                "2": "Policial",
-                "3": "Notebooks"
-            }
+mkp_list = read_marketplaces('marketplaces/entradas/marketplaces.txt')
 
-def fill_marketplaces() -> list:
-
-    mkp_list = list()
-
-    for mkp in mkp_names:
-        mkp_list.append(Marketplace(mkp, len(mkp_list)+1))
-
-    return mkp_list
-
+cat_list = read_categories('marketplaces/entradas/categorias.txt')
 
 def print_list(one_list):
     for one in one_list:
@@ -92,12 +94,15 @@ def print_subcat_by_cat(subcat_list, cat) -> list:
     
     return lista
 
-def fill_all():
-    mkp_list = fill_marketplaces(mkp_names)
-    cat_list = fill_categories(cat_names)
-    subcat_list = fill_subcategories(subcat_names)
+def only_cats(cat_list) -> list:
+    lista = []
+    for cat in cat_list:
+        if cat.is_cat():
+            lista.append(cat)
+    return lista
 
 if __name__ == '__main__':
+
     option = -1
 
     while(option != 0):
@@ -109,12 +114,15 @@ if __name__ == '__main__':
             print("Choose a marketplace id")
             print_list(mkp_list)
             mkp_id = int(input())
-            print_cat_by_mkp(cat_list, mkp_id)
+            lista = print_cat_by_mkp(cat_list, mkp_id)
+            print_list(lista)
+
         elif option == 3:
             print("Choose a category id")
-            print_list(cat_list)
+            print_list(only_cats(cat_list))
             cat_id = int(input())
-            print_subcat_by_cat(subcat_list, cat_id)
+            lista = print_subcat_by_cat(cat_list, cat_id)
+            print_list(lista)
         elif option == 0:
             print("See you soon!")
             exit()

@@ -1,0 +1,9 @@
+1;Dual Chip
+2;Policial
+3;Notebooks
+4;Cozinha
+5;Brinquedos
+6;Toalhas
+7;Cachorros
+8;Vestidos
+9;Furadeiras

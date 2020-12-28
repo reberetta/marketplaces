@@ -1,0 +1,18 @@
+0;1;Smartphones
+0;1;Livros
+0;1;Informática
+0;2;Utilidades Domesticas
+0;2;Infantil
+0;2;Cama Mesa Banho
+0;3;Animais
+0;3;Vestuário
+0;3;Ferramentas
+1;0;Dual Chip
+2;0;Policial
+3;0;Notebooks
+4;0;Cozinha
+5;0;Brinquedos
+6;0;Toalhas
+7;0;Cachorros
+8;0;Vestidos
+9;0;Furadeiras

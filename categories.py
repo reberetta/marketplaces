@@ -7,11 +7,11 @@ class Category:
     __mkp: int
     __father: int
 
-    def __init__(self, name, mkp, id):
+    def __init__(self, name, mkp, id, father):
         self.__name = name
         self.__mkp = mkp
         self.__id = id
-        self.__father = 0
+        self.__father = father
 
     def set_father(self, father):
         self.__father = father
@@ -21,7 +21,7 @@ class Category:
     
     def __str__(self):
         if(self.__father == 0):
-            return f'{self.__id}: {self.__name}'
+            return f'{self.__id}: {self.__name} ({self.__mkp})'
         else:
             return f'{self.__id}: {self.__name} >> {self.__father}'
 
@@ -31,5 +31,10 @@ class Category:
     def is_son(self, father) -> bool:
         return self.__father == father
 
+    def is_cat(self) -> bool:
+        if self.__father == 0:
+            return True
+        else:
+            return False
 
  

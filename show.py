@@ -1,4 +1,4 @@
-from fillin import fill_marketplaces, fill_categories, print_cat_by_mkp, fill_subcategories, print_subcat_by_cat
+from fillin import print_cat_by_mkp, fill_subcategories, print_subcat_by_cat, mkp_list, cat_list
 from flask import Flask, render_template
 
 
@@ -28,7 +28,7 @@ def index():
     lista = []
 
 
-    mkp_list = fill_marketplaces()
+    #mkp_list = fill_marketplaces()
 
     for mkp in mkp_list:
         temp = {'nome': mkp.get_name(), 'rota': '/'+mkp.get_name()}
@@ -42,7 +42,7 @@ def index():
 def americanas():
     listinha = []
 
-    cat_list = fill_categories()
+    #cat_list = fill_categories()
     lista = print_cat_by_mkp(cat_list, 2)
 
     titulo_app = "Categorias Americanas"
@@ -58,7 +58,7 @@ def americanas():
 def submarino():
     listinha = []
 
-    cat_list = fill_categories()
+    #cat_list = fill_categories()
     lista = print_cat_by_mkp(cat_list, 1)
 
     titulo_app = "Categorias Submarino"
@@ -74,7 +74,7 @@ def submarino():
 def mercado():
     listinha = []
 
-    cat_list = fill_categories()
+    #cat_list = fill_categories()
     lista = print_cat_by_mkp(cat_list, 3)
 
     titulo_app = "Categorias Mercado Livre"
