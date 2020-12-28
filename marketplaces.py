@@ -14,6 +14,9 @@ class Marketplace:
     def set_name(self, name: str):
         self.__name = name
 
+    def get_id(self):
+        return self.__id
+
     def __str__(self):
         return f'{self.__id}: {self.__name}'
 

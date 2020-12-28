@@ -31,6 +31,9 @@ class Category:
     def is_son(self, father) -> bool:
         return self.__father == father
 
+    def get_id(self) -> int:
+        return self.__id
+
     def is_cat(self) -> bool:
         if self.__father == 0:
             return True

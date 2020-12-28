@@ -31,80 +31,43 @@ def index():
     #mkp_list = fill_marketplaces()
 
     for mkp in mkp_list:
-        temp = {'nome': mkp.get_name(), 'rota': '/'+mkp.get_name()}
+        temp = {'nome': mkp.get_name(), 'rota': '/categorias/'+str(mkp.get_id())}
         print(temp)
         lista.append(temp)
 
     return render_template('index.html', nome=titulo_app, lista=lista )
 
 
-@app.route('/Americanas')
-def americanas():
+@app.route("/categorias/<int:id>", methods=["GET"])
+def categorias(id):
     listinha = []
 
-    #cat_list = fill_categories()
-    lista = print_cat_by_mkp(cat_list, 2)
+    lista = print_cat_by_mkp(cat_list, id)
 
-    titulo_app = "Categorias Americanas"
-
-    for cat in lista:
-        temp = {'nome': cat.get_name(), 'rota': '/'+cat.get_name()}
-        print(temp)
-        listinha.append(temp)
-
-    return render_template('index.html', nome=titulo_app, lista=listinha )
-
-@app.route('/Submarino')
-def submarino():
-    listinha = []
-
-    #cat_list = fill_categories()
-    lista = print_cat_by_mkp(cat_list, 1)
-
-    titulo_app = "Categorias Submarino"
+    titulo_app = "Categorias"
 
     for cat in lista:
-        temp = {'nome': cat.get_name(), 'rota': '/'+cat.get_name()}
-        print(temp)
-        listinha.append(temp)
-
-    return render_template('index.html', nome=titulo_app, lista=listinha )
-
-@app.route('/MercadoLivre')
-def mercado():
-    listinha = []
-
-    #cat_list = fill_categories()
-    lista = print_cat_by_mkp(cat_list, 3)
-
-    titulo_app = "Categorias Mercado Livre"
-
-    for cat in lista:
-        temp = {'nome': cat.get_name(), 'rota': '/'+cat.get_name()}
+        temp = {'nome': cat.get_name(), 'rota': '/subcategorias/'+str(cat.get_id())}
         print(temp)
         listinha.append(temp)
 
     return render_template('index.html', nome=titulo_app, lista=listinha )
 
 
-
-@app.route('/Smartphones')
-def smartphones():
+@app.route("/subcategorias/<int:id>", methods=["GET"])
+def subcategorias(id):
     listinha = []
 
-    subcat_list = fill_subcategories()
-    lista = print_subcat_by_cat(subcat_list, 1)
+    #subcat_list = fill_subcategories()
+    lista = print_subcat_by_cat(cat_list, id)
 
-    titulo_app = "Subategorias Smartphones"
+    titulo_app = "Subategorias"
 
     for cat in lista:
-        temp = {'nome': cat.get_name(), 'rota': '/'+cat.get_name()}
-        print(temp)
+        temp = {'nome': cat.get_name(), 'rota': '#'}
         listinha.append(temp)
 
     return render_template('index.html', nome=titulo_app, lista=listinha )
-
-
 
 
 app.run(debug=True) 
