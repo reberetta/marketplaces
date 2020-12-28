@@ -31,8 +31,13 @@ class Category:
     def is_son(self, father) -> bool:
         return self.__father == father
 
-    def get_id(self) -> int:
+    @property
+    def id(self)->int:
         return self.__id
+    
+    @id.setter
+    def id(self, id)->None:
+        self.__id = id
 
     def is_cat(self) -> bool:
         if self.__father == 0:

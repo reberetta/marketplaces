@@ -31,7 +31,7 @@ def index():
     #mkp_list = fill_marketplaces()
 
     for mkp in mkp_list:
-        temp = {'nome': mkp.get_name(), 'rota': '/categorias/'+str(mkp.get_id())}
+        temp = {'nome': mkp.get_name(), 'rota': '/categorias/'+str(mkp.id)}
         print(temp)
         lista.append(temp)
 
@@ -47,7 +47,7 @@ def categorias(id):
     titulo_app = "Categorias"
 
     for cat in lista:
-        temp = {'nome': cat.get_name(), 'rota': '/subcategorias/'+str(cat.get_id())}
+        temp = {'nome': cat.get_name(), 'rota': '/subcategorias/'+str(cat.id)}
         print(temp)
         listinha.append(temp)
 
