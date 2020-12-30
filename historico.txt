@@ -24,3 +24,18 @@
 2020-12-30 13:23:44.005812: Print marketplaces
 2020-12-30 13:24:00.667540: Print marketplaces
 2020-12-30 13:24:04.080671: Save new marketplace =opa
+2020-12-30 13:25:25.830305: Print marketplaces
+2020-12-30 13:25:28.813668: Print categories by marketplace, id=8
+2020-12-30 13:26:32.357173: Print marketplaces
+2020-12-30 13:30:17.577666: Print marketplaces
+2020-12-30 13:35:56.314206: Print marketplaces
+2020-12-30 13:37:50.022363: Print marketplaces
+2020-12-30 13:37:51.928398: Print marketplaces
+2020-12-30 13:37:59.377100: Save new marketplace =petpet
+2020-12-30 13:38:03.920497: Print marketplaces
+2020-12-30 13:42:45.135017: Print marketplaces
+2020-12-30 13:44:29.954408: Print marketplaces
+2020-12-30 13:44:54.261920: Print marketplaces
+2020-12-30 13:47:41.459607: Print marketplaces
+2020-12-30 13:47:46.432093: Save new marketplace =netshoes
+2020-12-30 13:47:50.906397: Print marketplaces

@@ -127,12 +127,12 @@ def only_cats(cat_list) -> list:
             lista.append(cat)
     return lista
 
-def add_new_marketplace(name:str)->None:    
-    mkp_list.append(Marketplace(name, len(mkp_list)+1))
-    name.strip("\n")
-    salvar_arquivo(mkp_file,"\n"+name)
-    linha = f'{datetime.now()}: Save new marketplace ={name}'
-    salvar_arquivo(caminho, linha)
+def add_new_marketplace(name:str)->None:  
+    if isinstance(name, str):  
+        mkp_list.append(Marketplace(name, len(mkp_list)+1))
+        salvar_arquivo(mkp_file,"\n"+name)
+        linha = f'{datetime.now()}: Save new marketplace ={name}'
+        salvar_arquivo(caminho, linha)
     
 
 if __name__ == '__main__':
