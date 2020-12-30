@@ -3,6 +3,7 @@ from categories import Category
 from datetime import datetime
 
 caminho = 'marketplaces/historico.txt'
+mkp_file = 'marketplaces/entradas/marketplaces.txt'
 
 
 def read_marketplaces(nome:str)->list:
@@ -27,7 +28,7 @@ def read_categories(nome:str)->list:
     arquivo.close()
     return lista
 
-mkp_list = read_marketplaces('marketplaces/entradas/marketplaces.txt')
+mkp_list = read_marketplaces(mkp_file)
 
 cat_list = read_categories('marketplaces/entradas/categorias.txt')
 
@@ -74,13 +75,14 @@ def show_menu() -> int:
                     1 - List Marketplaces
                     2 - List Categories by Marketplace
                     3 - List Subcategories by Categories
+                    4 - Add new marketplace
                     0 - Ends
                     '''
                 )
 
     return option
 
-def salvar_historico(linha:str) -> None:
+def salvar_arquivo(caminho:str,linha:str) -> None:
     arquivo = open(caminho,'a')
     arquivo.write(f'{linha}\n')
     arquivo.close()
@@ -90,7 +92,7 @@ def print_marketplaces() -> list:
     for mkp in mkp_list:
         lista.append(mkp)
     linha = f'{datetime.now()}: Print marketplaces'
-    salvar_historico(linha)
+    salvar_arquivo(caminho, linha)
     return lista
 
 def print_cat_by_mkp(cat_list, mkp) -> list:
@@ -101,7 +103,7 @@ def print_cat_by_mkp(cat_list, mkp) -> list:
             lista.append(cat)
     
     linha = f'{datetime.now()}: Print categories by marketplace, id={mkp}'
-    salvar_historico(linha)
+    salvar_arquivo(caminho, linha)
     
     return lista
 
@@ -113,7 +115,7 @@ def print_subcat_by_cat(subcat_list, cat) -> list:
             lista.append(subcat)
     
     linha = f'{datetime.now()}: Print subcategories by categories, id={cat}'
-    salvar_historico(linha)
+    salvar_arquivo(caminho, linha)
 
 
     return lista
@@ -124,6 +126,14 @@ def only_cats(cat_list) -> list:
         if cat.is_cat():
             lista.append(cat)
     return lista
+
+def add_new_marketplace(name:str)->None:    
+    mkp_list.append(Marketplace(name, len(mkp_list)+1))
+    name.strip("\n")
+    salvar_arquivo(mkp_file,"\n"+name)
+    linha = f'{datetime.now()}: Save new marketplace ={name}'
+    salvar_arquivo(caminho, linha)
+    
 
 if __name__ == '__main__':
 
@@ -147,6 +157,9 @@ if __name__ == '__main__':
             cat_id = int(input())
             lista = print_subcat_by_cat(cat_list, cat_id)
             print_list(lista)
+        elif option == 4:
+            mkp_name = input("What is the name of the new marketplace?")
+            add_new_marketplace(mkp_name)
         elif option == 0:
             print("See you soon!")
             exit()
